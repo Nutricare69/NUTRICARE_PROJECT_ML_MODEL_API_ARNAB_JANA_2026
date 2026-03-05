@@ -1,0 +1,167 @@
+{
+  "admin": {
+    "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "email": "admin@nutricare.com",
+    "name": "System Administrator",
+    "registration_date": "2026-03-05 15:05:29",
+    "profile_history": [],
+    "meal_plan_history": [],
+    "last_login": null,
+    "user_type": "admin",
+    "is_active": true,
+    "login_count": 0
+  },
+  "USER1": {
+    "password": "a7d75d3c224258f85b23ca47152b37545a0bfcce249066b4a30205086775dfa3",
+    "email": "USER1@example.com",
+    "name": "USER1",
+    "registration_date": "2026-03-05 15:10:23",
+    "profile_history": [
+      {
+        "name": "John Doe",
+        "age": 30,
+        "gender": "Male",
+        "weight": 75.0,
+        "height": 175.0,
+        "goal": "Weight Loss",
+        "food_preference": "Vegetarian",
+        "medical_conditions": [],
+        "allergies": [],
+        "activity_level": "Moderately Active",
+        "days": 7,
+        "bmi": 24.49,
+        "tdee": 2322,
+        "timestamp": "2026-03-05 15:28:07",
+        "plan_id": 1
+      }
+    ],
+    "meal_plan_history": [
+      {
+        "plan_data": {
+          "Monday": {
+            "Breakfast": [
+              "Millet Soup",
+              "Minestrone Soup"
+            ],
+            "Lunch": [
+              "Cream Of Mixed Vegetable Soup",
+              "Cold Summer Garden Soup"
+            ],
+            "Dinner": [
+              "Mixed Vegetable Soup",
+              "Lemonade"
+            ]
+          },
+          "Tuesday": {
+            "Breakfast": [
+              "Cream Of Mixed Vegetable Soup",
+              "Fruit Punch (With Fresh Juices)"
+            ],
+            "Lunch": [
+              "Minestrone Soup",
+              "Iced Tea"
+            ],
+            "Dinner": [
+              "Gooseberry Marmalade (Amla Murabba)",
+              "Consomme Au Julienne"
+            ]
+          },
+          "Wednesday": {
+            "Breakfast": [
+              "Lemonade",
+              "Fruit Punch (With Fresh Juices)"
+            ],
+            "Lunch": [
+              "Starfruit Preserves ",
+              "Lentil Soup"
+            ],
+            "Dinner": [
+              "Starfruit Preserves ",
+              "Cream Of Broccoli Soup"
+            ]
+          },
+          "Thursday": {
+            "Breakfast": [
+              "Lemonade",
+              "Cold Summer Garden Soup"
+            ],
+            "Lunch": [
+              "Consomme Au Julienne",
+              "Cream Of Broccoli Soup"
+            ],
+            "Dinner": [
+              "Brown Sauce",
+              "Lemonade"
+            ]
+          },
+          "Friday": {
+            "Breakfast": [
+              "Fruit Punch (With Fresh Juices)",
+              "Mintade"
+            ],
+            "Lunch": [
+              "Classic Seasoned Black Beans",
+              "Consomme Au Julienne"
+            ],
+            "Dinner": [
+              "French Onion Soup",
+              "Green Pea Soup (Matar Ka Soup)"
+            ]
+          },
+          "Saturday": {
+            "Breakfast": [
+              "Lemonade",
+              "Cold Summer Garden Soup"
+            ],
+            "Lunch": [
+              "Millet Soup",
+              "Cream Of Carrot Soup"
+            ],
+            "Dinner": [
+              "Fruit Punch (With Fresh Juices)",
+              "Talaumein Soup"
+            ]
+          },
+          "Sunday": {
+            "Breakfast": [
+              "Curried Cauliflower Soup",
+              "Cheese Soup"
+            ],
+            "Lunch": [
+              "Starfruit Preserves ",
+              "Mixed Vegetable Soup"
+            ],
+            "Dinner": [
+              "Almond Soup (Badam Ka Soup)",
+              "Spinach Soup (Palak Ka Soup)"
+            ]
+          }
+        },
+        "user_profile": {
+          "name": "John Doe",
+          "age": 30,
+          "gender": "Male",
+          "weight": 75.0,
+          "height": 175.0,
+          "goal": "Weight Loss",
+          "food_preference": "Vegetarian",
+          "medical_conditions": [],
+          "allergies": [],
+          "activity_level": "Moderately Active",
+          "days": 7,
+          "bmi": 24.49,
+          "tdee": 2322,
+          "timestamp": "2026-03-05 15:28:07",
+          "plan_id": 1
+        },
+        "food_count": 50,
+        "timestamp": "2026-03-05 15:28:07",
+        "plan_id": 1
+      }
+    ],
+    "last_login": "2026-03-05 15:27:32",
+    "user_type": "user",
+    "is_active": true,
+    "login_count": 3
+  }
+}

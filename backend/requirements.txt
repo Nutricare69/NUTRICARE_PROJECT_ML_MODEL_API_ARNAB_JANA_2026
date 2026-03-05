@@ -1,0 +1,8 @@
+fastapi[all]
+python-multipart
+passlib[bcrypt]
+python-jose[cryptography]
+pandas
+numpy
+plotly
+streamlit  # only for reference, not needed for API
