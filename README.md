@@ -91,7 +91,7 @@ that best match the user's nutritional needs.
 
 <hr>
 
-<h3>✅ 7-Day Meal Plan Generator</h3>
+<h3>✅ 7-Day/14-Day Meal Plan Generator</h3>
 
 <ul>
 <li>Randomly sampled from top-scored foods</li>
