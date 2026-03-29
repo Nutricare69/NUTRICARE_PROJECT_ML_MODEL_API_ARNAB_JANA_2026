@@ -38,7 +38,7 @@ def generate_meal_plan_endpoint(request: MealPlanRequest,):
     #         "plan_data": meal_plan,
     #         "user_profile": profile_with_metrics,
     #         "food_count": len(filtered_df)
-    #     })
+    #     }) closed for testing without auth
 
     return MealPlanResponse(
         user_profile=ProfileWithMetrics(**profile_with_metrics),
