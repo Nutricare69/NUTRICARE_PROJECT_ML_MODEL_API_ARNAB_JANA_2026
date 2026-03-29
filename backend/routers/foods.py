@@ -11,13 +11,11 @@ def list_foods(
     sort_by: Optional[str] = Query("score", regex="^(score|calories|protein|carbs)$"),
     limit: int = Query(50, ge=1, le=200)
 ):
-    df = load_data()
+    df = load_data()   # now contains a default score
     if search:
         df = df[df["name"].str.contains(search, case=False, na=False)]
-    if "score" not in df.columns:
-        df["score"] = 0.0
     sort_by = sort_by or "score"
-    ascending = sort_by == "score"
+    ascending = sort_by == "score"   # lower score is better
     df = df.sort_values(sort_by, ascending=ascending).head(limit)
     return df.to_dict(orient="records")
 
