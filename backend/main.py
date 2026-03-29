@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import auth, users, meal_plan, admin, foods, analysis
+from routers import auth, users, meal_plan, admin, foods, analysis, analytics
 from utils.storage import create_admin_account
 
 # Create default admin on startup
@@ -28,6 +28,7 @@ app.include_router(meal_plan.router)
 app.include_router(admin.router)
 app.include_router(foods.router)
 app.include_router(analysis.router)
+app.include_router(analytics.router)
 
 @app.get("/")
 def root():
