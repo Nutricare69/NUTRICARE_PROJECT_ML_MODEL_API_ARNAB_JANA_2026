@@ -67,16 +67,36 @@ class ProfileHistoryItem(ProfileWithMetrics):
 class MealPlanRequest(UserProfile):
     days: int = 7
 
+class MealFood(BaseModel):
+    name: str
+    calories: float = Field(..., description="Calories (kcal)")
+    protein: float = Field(..., description="Protein (grams)")
+    fat: float = Field(..., description="Fat (grams)")
+    carbs: float = Field(..., description="Carbohydrates (grams)")
+
+class DaySummary(BaseModel):
+    total_calories: float = Field(..., description="Total calories for the day (kcal)")
+    total_protein: float = Field(..., description="Total protein (grams)")
+    total_fat: float = Field(..., description="Total fat (grams)")
+    total_carbs: float = Field(..., description="Total carbohydrates (grams)")
+    target_calories: int = Field(..., description="Daily calorie target (kcal)")
+    target_protein: float = Field(..., description="Target protein intake (grams)")
+    target_fat: float = Field(..., description="Target fat intake (grams)")
+    target_carbs: float = Field(..., description="Target carbohydrate intake (grams)")
+
 class MealPlanResponse(BaseModel):
     user_profile: ProfileWithMetrics
-    meal_plan: Dict[str, Dict[str, List[str]]]  
+    daily_calorie_target: int
+    meal_plan: Dict[str, Dict[str, List[MealFood]]]
+    day_summaries: Dict[str, DaySummary]
     filtered_foods_count: int
 
 class MealPlanHistoryItem(BaseModel):
     plan_id: int
     timestamp: str
     user_profile: ProfileWithMetrics
-    plan_data: Dict[str, Dict[str, List[str]]]
+    plan_data: Dict[str, Dict[str, List[MealFood]]]
+    day_summaries: Dict[str, DaySummary]
     food_count: int
 
 # ---------- Food Schemas ----------
