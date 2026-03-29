@@ -1,38 +1,95 @@
 {
-  "admin": {
-    "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
-    "email": "admin@nutricare.com",
-    "name": "System Administrator",
-    "registration_date": "2026-03-05 15:05:29",
-    "profile_history": [],
-    "meal_plan_history": [],
-    "last_login": null,
-    "user_type": "admin",
-    "is_active": true,
-    "login_count": 0
-  },
-  "USER1": {
-    "password": "a7d75d3c224258f85b23ca47152b37545a0bfcce249066b4a30205086775dfa3",
-    "email": "USER1@example.com",
-    "name": "USER1",
-    "registration_date": "2026-03-05 15:10:23",
+  "Suvajit_55555": {
+    "password": "71cfce6a9167a3159f448d7aab175e11137f47507b87c143dbf7329b4f328fef",
+    "email": "suvajit@gmail.com",
+    "name": "SuvajitDev",
+    "registration_date": "2026-03-05 21:43:23",
     "profile_history": [
       {
-        "name": "John Doe",
-        "age": 30,
+        "name": "Suvajit",
+        "age": 20,
         "gender": "Male",
-        "weight": 75.0,
-        "height": 175.0,
-        "goal": "Weight Loss",
+        "weight": 80.0,
+        "height": 170.0,
+        "goal": "Muscle Gain",
         "food_preference": "Vegetarian",
         "medical_conditions": [],
-        "allergies": [],
-        "activity_level": "Moderately Active",
+        "allergies": [
+          "Gluten"
+        ],
+        "activity_level": "Sedentary",
         "days": 7,
-        "bmi": 24.49,
-        "tdee": 2322,
-        "timestamp": "2026-03-05 15:28:07",
+        "bmi": 27.68,
+        "tdee": 2570,
+        "timestamp": "2026-03-05 21:54:27",
         "plan_id": 1
+      },
+      {
+        "name": "Suvajit",
+        "age": 20,
+        "gender": "Male",
+        "weight": 80.0,
+        "height": 170.0,
+        "goal": "Muscle Gain",
+        "food_preference": "Vegetarian",
+        "medical_conditions": [
+          "PCOS"
+        ],
+        "allergies": [
+          "Gluten"
+        ],
+        "activity_level": "Sedentary",
+        "days": 7,
+        "bmi": 27.68,
+        "tdee": 2570,
+        "timestamp": "2026-03-05 22:21:40",
+        "plan_id": 2
+      },
+      {
+        "name": "Suvajit",
+        "age": 20,
+        "gender": "Male",
+        "weight": 80.0,
+        "height": 170.0,
+        "goal": "Muscle Gain",
+        "food_preference": "Vegetarian",
+        "medical_conditions": [
+          "PCOS",
+          "Thyroid Issues"
+        ],
+        "allergies": [
+          "Gluten",
+          "Soy"
+        ],
+        "activity_level": "Lightly Active",
+        "days": 7,
+        "bmi": 27.68,
+        "tdee": 2945,
+        "timestamp": "2026-03-05 22:24:39",
+        "plan_id": 3
+      },
+      {
+        "name": "Suvajit",
+        "age": 20,
+        "gender": "Male",
+        "weight": 80.0,
+        "height": 170.0,
+        "goal": "Muscle Gain",
+        "food_preference": "Vegetarian",
+        "medical_conditions": [
+          "PCOS",
+          "Thyroid Issues"
+        ],
+        "allergies": [
+          "Gluten",
+          "Soy"
+        ],
+        "activity_level": "Lightly Active",
+        "days": 7,
+        "bmi": 27.68,
+        "tdee": 2945,
+        "timestamp": "2026-03-05 22:55:22",
+        "plan_id": 4
       }
     ],
     "meal_plan_history": [
@@ -40,128 +97,524 @@
         "plan_data": {
           "Monday": {
             "Breakfast": [
-              "Millet Soup",
-              "Minestrone Soup"
-            ],
-            "Lunch": [
-              "Cream Of Mixed Vegetable Soup",
+              "Tomato Aspic",
               "Cold Summer Garden Soup"
             ],
+            "Lunch": [
+              "Green Pea Soup (Matar Ka Soup)",
+              "Moong Dal Mixture"
+            ],
             "Dinner": [
-              "Mixed Vegetable Soup",
-              "Lemonade"
+              "Vegetable Mix",
+              "Cream Of Potato Soup"
             ]
           },
           "Tuesday": {
             "Breakfast": [
-              "Cream Of Mixed Vegetable Soup",
-              "Fruit Punch (With Fresh Juices)"
+              "Idli",
+              "French Onion Soup"
             ],
             "Lunch": [
-              "Minestrone Soup",
-              "Iced Tea"
+              "Spaghetti Bolognese",
+              "Consomme Au Julienne"
             ],
             "Dinner": [
-              "Gooseberry Marmalade (Amla Murabba)",
-              "Consomme Au Julienne"
+              "Cold Summer Garden Soup",
+              "Mulligatawny Soup"
             ]
           },
           "Wednesday": {
             "Breakfast": [
-              "Lemonade",
-              "Fruit Punch (With Fresh Juices)"
+              "Cream Of Potato Soup",
+              "Cream Of Mixed Vegetable Soup"
             ],
             "Lunch": [
-              "Starfruit Preserves ",
-              "Lentil Soup"
+              "Almond Soup (Badam Ka Soup)",
+              "Cream Of Broccoli Soup"
             ],
             "Dinner": [
-              "Starfruit Preserves ",
-              "Cream Of Broccoli Soup"
+              "Cream Of Mixed Vegetable Soup",
+              "Cheese Soup"
             ]
           },
           "Thursday": {
             "Breakfast": [
-              "Lemonade",
-              "Cold Summer Garden Soup"
+              "Rice Flakes And Roasted Channa ",
+              "Millet Soup"
             ],
             "Lunch": [
-              "Consomme Au Julienne",
-              "Cream Of Broccoli Soup"
+              "Cream Of Broccoli Soup",
+              "Cream Of Potato Soup"
             ],
             "Dinner": [
-              "Brown Sauce",
-              "Lemonade"
+              "Green Pea Soup (Matar Ka Soup)",
+              "Rice Flakes And Roasted Channa "
             ]
           },
           "Friday": {
             "Breakfast": [
-              "Fruit Punch (With Fresh Juices)",
-              "Mintade"
+              "Almond Soup (Badam Ka Soup)",
+              "Cold Summer Garden Soup"
             ],
             "Lunch": [
-              "Classic Seasoned Black Beans",
+              "Green Pea Soup (Matar Ka Soup)",
+              "Cream Of Mixed Vegetable Soup"
+            ],
+            "Dinner": [
+              "Minestrone Soup",
+              "Split Bengal Gram Sweet Rice (Channa Dal Sweet Rice)"
+            ]
+          },
+          "Saturday": {
+            "Breakfast": [
+              "Cream Of Broccoli Soup",
+              "Gum Icing"
+            ],
+            "Lunch": [
+              "Split Bengal Gram Sweet Rice (Channa Dal Sweet Rice)",
+              "Cream Of Potato Soup"
+            ],
+            "Dinner": [
+              "Cream Of Potato Soup",
               "Consomme Au Julienne"
+            ]
+          },
+          "Sunday": {
+            "Breakfast": [
+              "Split Bengal Gram Sweet Rice (Channa Dal Sweet Rice)",
+              "Mixed Vegetable Soup"
+            ],
+            "Lunch": [
+              "Cream Of Carrot Soup",
+              "Brown Sauce"
+            ],
+            "Dinner": [
+              "Millet Soup",
+              "Gum Icing"
+            ]
+          }
+        },
+        "user_profile": {
+          "name": "Suvajit",
+          "age": 20,
+          "gender": "Male",
+          "weight": 80.0,
+          "height": 170.0,
+          "goal": "Muscle Gain",
+          "food_preference": "Vegetarian",
+          "medical_conditions": [],
+          "allergies": [
+            "Gluten"
+          ],
+          "activity_level": "Sedentary",
+          "days": 7,
+          "bmi": 27.68,
+          "tdee": 2570,
+          "timestamp": "2026-03-05 21:54:27",
+          "plan_id": 1
+        },
+        "food_count": 50,
+        "timestamp": "2026-03-05 21:54:27",
+        "plan_id": 1
+      },
+      {
+        "plan_data": {
+          "Monday": {
+            "Breakfast": [
+              "Channa Murmura Premix",
+              "Minestrone Soup"
+            ],
+            "Lunch": [
+              "French Onion Soup",
+              "Gum Icing"
+            ],
+            "Dinner": [
+              "Clear Tomato Soup (Tamatar Ka Soup)",
+              "Cream Of Mixed Vegetable Soup"
+            ]
+          },
+          "Tuesday": {
+            "Breakfast": [
+              "Minestrone Soup",
+              "Green Pea Soup (Matar Ka Soup)"
+            ],
+            "Lunch": [
+              "Cold Summer Garden Soup",
+              "Rice Flakes And Roasted Channa "
+            ],
+            "Dinner": [
+              "Almond Soup (Badam Ka Soup)",
+              "Cream Of Mixed Vegetable Soup"
+            ]
+          },
+          "Wednesday": {
+            "Breakfast": [
+              "Talaumein Soup",
+              "Millet Soup"
+            ],
+            "Lunch": [
+              "Cream Of Broccoli Soup",
+              "Cold Summer Garden Soup"
+            ],
+            "Dinner": [
+              "Spinach Soup (Palak Ka Soup)",
+              "Cream Of Potato Soup"
+            ]
+          },
+          "Thursday": {
+            "Breakfast": [
+              "Cream Of Carrot Soup",
+              "Spinach Soup (Palak Ka Soup)"
+            ],
+            "Lunch": [
+              "Minestrone Soup",
+              "Cold Summer Garden Soup"
+            ],
+            "Dinner": [
+              "Mulligatawny Soup",
+              "Moong Dal Mixture"
+            ]
+          },
+          "Friday": {
+            "Breakfast": [
+              "Spinach Soup (Palak Ka Soup)",
+              "Classic Seasoned Black Beans"
+            ],
+            "Lunch": [
+              "Cream Of Broccoli Soup",
+              "Green Pea Soup (Matar Ka Soup)"
+            ],
+            "Dinner": [
+              "Cream Of Broccoli Soup",
+              "Spinach Soup (Palak Ka Soup)"
+            ]
+          },
+          "Saturday": {
+            "Breakfast": [
+              "Cream Of Potato Soup",
+              "Channa Murmura Premix"
+            ],
+            "Lunch": [
+              "Cream Of Carrot Soup",
+              "French Onion Soup"
+            ],
+            "Dinner": [
+              "Split Bengal Gram Sweet Rice (Channa Dal Sweet Rice)",
+              "Millet Soup"
+            ]
+          },
+          "Sunday": {
+            "Breakfast": [
+              "Spaghetti Bolognese",
+              "Spinach Soup (Palak Ka Soup)"
+            ],
+            "Lunch": [
+              "Curried Cauliflower Soup",
+              "Minestrone Soup"
+            ],
+            "Dinner": [
+              "Tomato Aspic",
+              "Green Pea Soup (Matar Ka Soup)"
+            ]
+          }
+        },
+        "user_profile": {
+          "name": "Suvajit",
+          "age": 20,
+          "gender": "Male",
+          "weight": 80.0,
+          "height": 170.0,
+          "goal": "Muscle Gain",
+          "food_preference": "Vegetarian",
+          "medical_conditions": [
+            "PCOS"
+          ],
+          "allergies": [
+            "Gluten"
+          ],
+          "activity_level": "Sedentary",
+          "days": 7,
+          "bmi": 27.68,
+          "tdee": 2570,
+          "timestamp": "2026-03-05 22:21:40",
+          "plan_id": 2
+        },
+        "food_count": 50,
+        "timestamp": "2026-03-05 22:21:40",
+        "plan_id": 2
+      },
+      {
+        "plan_data": {
+          "Monday": {
+            "Breakfast": [
+              "Mixed Vegetable Soup",
+              "Minestrone Soup"
+            ],
+            "Lunch": [
+              "Split Bengal Gram Sweet Rice (Channa Dal Sweet Rice)",
+              "Lentil Soup"
+            ],
+            "Dinner": [
+              "Talaumein Soup",
+              "Gum Icing"
+            ]
+          },
+          "Tuesday": {
+            "Breakfast": [
+              "Consomme Au Julienne",
+              "Millet Soup"
+            ],
+            "Lunch": [
+              "Cream Of Broccoli Soup",
+              "Lentil Soup"
+            ],
+            "Dinner": [
+              "Cream Of Potato Soup",
+              "Cold Summer Garden Soup"
+            ]
+          },
+          "Wednesday": {
+            "Breakfast": [
+              "Idli",
+              "Cream Of Potato Soup"
+            ],
+            "Lunch": [
+              "Mixed Vegetable Soup",
+              "Mulligatawny Soup"
+            ],
+            "Dinner": [
+              "Cream Of Broccoli Soup",
+              "Rice Flakes And Roasted Channa "
+            ]
+          },
+          "Thursday": {
+            "Breakfast": [
+              "Tomato Aspic",
+              "Rice Flakes And Roasted Channa "
+            ],
+            "Lunch": [
+              "Rice Flakes And Roasted Channa ",
+              "Talaumein Soup"
+            ],
+            "Dinner": [
+              "Cream Of Mixed Vegetable Soup",
+              "Moong Dal Mixture"
+            ]
+          },
+          "Friday": {
+            "Breakfast": [
+              "Cheese Soup",
+              "Cream Of Mixed Vegetable Soup"
+            ],
+            "Lunch": [
+              "Consomme Au Julienne",
+              "Brown Sauce"
+            ],
+            "Dinner": [
+              "Talaumein Soup",
+              "Cream Of Mixed Vegetable Soup"
+            ]
+          },
+          "Saturday": {
+            "Breakfast": [
+              "Curried Cauliflower Soup",
+              "French Onion Soup"
+            ],
+            "Lunch": [
+              "Cream Of Potato Soup",
+              "Classic Seasoned Black Beans"
+            ],
+            "Dinner": [
+              "Cream Of Potato Soup",
+              "Almond Soup (Badam Ka Soup)"
+            ]
+          },
+          "Sunday": {
+            "Breakfast": [
+              "Cream Of Mixed Vegetable Soup",
+              "Vegetable Mix"
+            ],
+            "Lunch": [
+              "Mixed Vegetable Soup",
+              "Split Bengal Gram Sweet Rice (Channa Dal Sweet Rice)"
+            ],
+            "Dinner": [
+              "Millet Soup",
+              "Green Pea Soup (Matar Ka Soup)"
+            ]
+          }
+        },
+        "user_profile": {
+          "name": "Suvajit",
+          "age": 20,
+          "gender": "Male",
+          "weight": 80.0,
+          "height": 170.0,
+          "goal": "Muscle Gain",
+          "food_preference": "Vegetarian",
+          "medical_conditions": [
+            "PCOS",
+            "Thyroid Issues"
+          ],
+          "allergies": [
+            "Gluten",
+            "Soy"
+          ],
+          "activity_level": "Lightly Active",
+          "days": 7,
+          "bmi": 27.68,
+          "tdee": 2945,
+          "timestamp": "2026-03-05 22:24:39",
+          "plan_id": 3
+        },
+        "food_count": 50,
+        "timestamp": "2026-03-05 22:24:39",
+        "plan_id": 3
+      },
+      {
+        "plan_data": {
+          "Monday": {
+            "Breakfast": [
+              "Talaumein Soup",
+              "Minestrone Soup"
+            ],
+            "Lunch": [
+              "Brown Sauce",
+              "Moong Dal Mixture"
+            ],
+            "Dinner": [
+              "Vegetable Mix",
+              "Classic Seasoned Black Beans"
+            ]
+          },
+          "Tuesday": {
+            "Breakfast": [
+              "Consomme Au Julienne",
+              "Talaumein Soup"
+            ],
+            "Lunch": [
+              "Green Pea Soup (Matar Ka Soup)",
+              "Clear Tomato Soup (Tamatar Ka Soup)"
+            ],
+            "Dinner": [
+              "Cream Of Carrot Soup",
+              "Classic Seasoned Black Beans"
+            ]
+          },
+          "Wednesday": {
+            "Breakfast": [
+              "Mulligatawny Soup",
+              "Cold Summer Garden Soup"
+            ],
+            "Lunch": [
+              "Gum Icing",
+              "Curried Cauliflower Soup"
             ],
             "Dinner": [
               "French Onion Soup",
+              "Classic Seasoned Black Beans"
+            ]
+          },
+          "Thursday": {
+            "Breakfast": [
+              "Lentil Soup",
+              "Cheese Soup"
+            ],
+            "Lunch": [
+              "Moong Dal Mixture",
+              "Split Bengal Gram Sweet Rice (Channa Dal Sweet Rice)"
+            ],
+            "Dinner": [
+              "Cold Summer Garden Soup",
+              "Brown Sauce"
+            ]
+          },
+          "Friday": {
+            "Breakfast": [
+              "Spinach Soup (Palak Ka Soup)",
+              "Moong Dal Mixture"
+            ],
+            "Lunch": [
+              "Mixed Vegetable Soup",
+              "Cold Summer Garden Soup"
+            ],
+            "Dinner": [
+              "Mixed Vegetable Soup",
               "Green Pea Soup (Matar Ka Soup)"
             ]
           },
           "Saturday": {
             "Breakfast": [
-              "Lemonade",
-              "Cold Summer Garden Soup"
+              "Vegetable Mix",
+              "Talaumein Soup"
             ],
             "Lunch": [
-              "Millet Soup",
-              "Cream Of Carrot Soup"
+              "Spinach Soup (Palak Ka Soup)",
+              "Cold Summer Garden Soup"
             ],
             "Dinner": [
-              "Fruit Punch (With Fresh Juices)",
-              "Talaumein Soup"
+              "Cream Of Mixed Vegetable Soup",
+              "Lentil Soup"
             ]
           },
           "Sunday": {
             "Breakfast": [
-              "Curried Cauliflower Soup",
-              "Cheese Soup"
+              "Consomme Au Julienne",
+              "Channa Murmura Premix"
             ],
             "Lunch": [
-              "Starfruit Preserves ",
-              "Mixed Vegetable Soup"
+              "Channa Murmura Premix",
+              "Cream Of Mixed Vegetable Soup"
             ],
             "Dinner": [
-              "Almond Soup (Badam Ka Soup)",
-              "Spinach Soup (Palak Ka Soup)"
+              "Channa Murmura Premix",
+              "Curried Cauliflower Soup"
             ]
           }
         },
         "user_profile": {
-          "name": "John Doe",
-          "age": 30,
+          "name": "Suvajit",
+          "age": 20,
           "gender": "Male",
-          "weight": 75.0,
-          "height": 175.0,
-          "goal": "Weight Loss",
+          "weight": 80.0,
+          "height": 170.0,
+          "goal": "Muscle Gain",
           "food_preference": "Vegetarian",
-          "medical_conditions": [],
-          "allergies": [],
-          "activity_level": "Moderately Active",
+          "medical_conditions": [
+            "PCOS",
+            "Thyroid Issues"
+          ],
+          "allergies": [
+            "Gluten",
+            "Soy"
+          ],
+          "activity_level": "Lightly Active",
           "days": 7,
-          "bmi": 24.49,
-          "tdee": 2322,
-          "timestamp": "2026-03-05 15:28:07",
-          "plan_id": 1
+          "bmi": 27.68,
+          "tdee": 2945,
+          "timestamp": "2026-03-05 22:55:22",
+          "plan_id": 4
         },
         "food_count": 50,
-        "timestamp": "2026-03-05 15:28:07",
-        "plan_id": 1
+        "timestamp": "2026-03-05 22:55:22",
+        "plan_id": 4
       }
     ],
-    "last_login": "2026-03-05 15:27:32",
+    "last_login": "2026-03-09 20:17:17",
     "user_type": "user",
     "is_active": true,
-    "login_count": 3
+    "login_count": 8
+  },
+  "admin": {
+    "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "email": "admin@nutricare.com",
+    "name": "System Administrator",
+    "registration_date": "2026-03-05 22:00:45",
+    "profile_history": [],
+    "meal_plan_history": [],
+    "last_login": null,
+    "user_type": "admin",
+    "is_active": true,
+    "login_count": 0
   }
 }

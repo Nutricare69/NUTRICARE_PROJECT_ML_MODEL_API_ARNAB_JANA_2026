@@ -57,7 +57,7 @@ class UserProfile(BaseModel):
 
 class ProfileWithMetrics(UserProfile):
     bmi: float
-    tdee: int
+    tdee: float
 
 class ProfileHistoryItem(ProfileWithMetrics):
     timestamp: str
@@ -69,7 +69,7 @@ class MealPlanRequest(UserProfile):
 
 class MealPlanResponse(BaseModel):
     user_profile: ProfileWithMetrics
-    meal_plan: Dict[str, Dict[str, List[str]]]
+    meal_plan: Dict[str, Dict[str, List[str]]]  
     filtered_foods_count: int
 
 class MealPlanHistoryItem(BaseModel):

@@ -144,6 +144,7 @@ def filter_foods(df: pd.DataFrame, food_preference: str, allergies: List[str],
     else:
         filtered_df = df.head(10)
 
+     
     return filtered_df
 
 
@@ -151,9 +152,9 @@ def generate_meal_plan(filtered_df: pd.DataFrame, days: int = 7) -> Dict[str, Di
     """Generate a meal plan for the given number of days."""
     if len(filtered_df) < 21:
         return {}
-    day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    day_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"]
     meal_plan = {}
-    for day in range(min(days, 7)):
+    for day in range(min(days, 14)):
         day_name = day_names[day]
         meal_plan[day_name] = {
             "Breakfast": random.sample(list(filtered_df["name"].head(30)), 2),

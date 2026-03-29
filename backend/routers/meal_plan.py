@@ -8,8 +8,8 @@ from dependencies import get_current_active_user
 router = APIRouter(prefix="/api/meal-plan", tags=["Meal Plan"])
 
 @router.post("/generate", response_model=MealPlanResponse)
-def generate_meal_plan_endpoint(request: MealPlanRequest,
-                                current_user: Dict = Depends(get_current_active_user)):
+def generate_meal_plan_endpoint(request: MealPlanRequest,):
+                                # current_user: Dict = Depends(get_current_active_user)):
     # Calculate metrics
     bmi, tdee = calculate_user_metrics(
         request.age, request.gender, request.weight, request.height,
@@ -31,14 +31,14 @@ def generate_meal_plan_endpoint(request: MealPlanRequest,
     # Generate meal plan
     meal_plan = generate_meal_plan(filtered_df, days=request.days)
 
-    # Save profile and meal plan to history
-    save_user_profile(current_user["username"], profile_with_metrics)
-    if meal_plan:
-        save_meal_plan(current_user["username"], {
-            "plan_data": meal_plan,
-            "user_profile": profile_with_metrics,
-            "food_count": len(filtered_df)
-        })
+    #Save profile and meal plan to history
+    # save_user_profile(current_user["username"], profile_with_metrics)
+    # if meal_plan:
+    #     save_meal_plan(current_user["username"], {
+    #         "plan_data": meal_plan,
+    #         "user_profile": profile_with_metrics,
+    #         "food_count": len(filtered_df)
+    #     })
 
     return MealPlanResponse(
         user_profile=ProfileWithMetrics(**profile_with_metrics),

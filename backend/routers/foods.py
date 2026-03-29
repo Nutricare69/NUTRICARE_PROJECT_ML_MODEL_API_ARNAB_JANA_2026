@@ -16,6 +16,7 @@ def list_foods(
         df = df[df["name"].str.contains(search, case=False, na=False)]
     if "score" not in df.columns:
         df["score"] = 0.0
+    sort_by = sort_by or "score"
     ascending = sort_by == "score"
     df = df.sort_values(sort_by, ascending=ascending).head(limit)
     return df.to_dict(orient="records")
