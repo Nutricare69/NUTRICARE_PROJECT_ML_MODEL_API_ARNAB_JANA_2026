@@ -29,7 +29,7 @@ def register_user(username: str, password: str, email: str, name: str) -> Tuple[
     # Email validation (simple)
     if "@" not in email or "." not in email:
         return False, "Invalid email format!"
-    users[username] = {
+        users[username] = {
         'password': hash_password(password),
         'email': email,
         'name': name,
@@ -39,7 +39,8 @@ def register_user(username: str, password: str, email: str, name: str) -> Tuple[
         'last_login': None,
         'user_type': 'user',
         'is_active': True,
-        'login_count': 0
+        'login_count': 0,
+        'subscription_tier': 'free'
     }
     save_users(users)
     return True, "Registration successful!"
@@ -126,7 +127,8 @@ def create_admin_account() -> bool:
             'last_login': None,
             'user_type': 'admin',
             'is_active': True,
-            'login_count': 0
+            'login_count': 0,
+            'subscription_tier': 'premium'
         }
         save_users(users)
         return True
@@ -210,3 +212,21 @@ def get_all_users_feedback() -> List[Dict]:
                         'rated_at': rating_data.get('rated_at')
                     })
     return all_feedback
+
+
+def upgrade_user_to_premium(username: str) -> bool:
+    """Upgrade a user's subscription to premium."""
+    users = load_users()
+    if username not in users:
+        return False
+    users[username]['subscription_tier'] = 'premium'
+    save_users(users)
+    return True
+
+def get_user_subscription(username: str) -> str:
+    """Return subscription tier ('free' or 'premium') for a user."""
+    users = load_users()
+    user = users.get(username)
+    if user:
+        return user.get('subscription_tier', 'free')
+    return 'free'

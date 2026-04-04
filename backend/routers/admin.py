@@ -47,6 +47,15 @@ def delete_user_endpoint(username: str, _: Dict = Depends(get_current_admin)):
         raise HTTPException(status_code=400, detail=message)
     return {"message": message}
 
+# NEW ENDPOINT
+@router.post("/users/{username}/upgrade")
+def upgrade_user(username: str, _: Dict = Depends(get_current_admin)):
+    from utils.storage import upgrade_user_to_premium
+    success = upgrade_user_to_premium(username)
+    if not success:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {"message": f"User {username} upgraded to premium"}
+
 @router.post("/users", response_model=Dict)
 def create_admin(user: UserRegister, _: Dict = Depends(get_current_admin)):
     users = load_users()

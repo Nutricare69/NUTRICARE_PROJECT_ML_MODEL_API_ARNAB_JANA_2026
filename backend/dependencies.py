@@ -42,14 +42,14 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> Dict[str, Any
     return {"username": username, "user_type": user_type}
 
 async def get_current_active_user(current_user: Dict = Depends(get_current_user)) -> Dict:
-    # Optionally check if user exists and is active (call storage)
-    from utils.storage import load_users
+    from utils.storage import load_users, get_user_subscription
     users = load_users()
     if current_user["username"] not in users:
         raise HTTPException(status_code=401, detail="User not found")
     if not users[current_user["username"]].get("is_active", True):
         raise HTTPException(status_code=403, detail="User is deactivated")
-    return current_user
+    subscription = get_user_subscription(current_user["username"])
+    return {**current_user, "subscription_tier": subscription}
 
 async def get_current_admin(current_user: Dict = Depends(get_current_active_user)) -> Dict:
     if current_user["user_type"] != "admin":

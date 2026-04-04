@@ -263,13 +263,15 @@ def generate_meal_plan(filtered_df: pd.DataFrame, days: int = 7,
         "carbs": tdee * target_macro_ratios["carbs"] / 4
     }
 
-    day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    # Create day names as "Day 01", "Day 02", ... up to 14 days
+    day_names = [f"Day {i+1:02d}" for i in range(min(days, 14))]
     meal_plan = {}
     day_summaries = {}
     used_foods = []  # track across all days to avoid repetition
 
-    for day in range(min(days, 7)):
+    for day in range(min(days, 14)):
         day_name = day_names[day]
+        # The rest of the loop body (from meal_plan[day_name] = {} onward) remains exactly the same
         meal_plan[day_name] = {}
         day_total_calories = 0
         day_total_protein = 0

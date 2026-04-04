@@ -8,7 +8,15 @@ from dependencies import get_current_active_user
 router = APIRouter(prefix="/api/meal-plan", tags=["Meal Plan"])
 
 @router.post("/generate", response_model=MealPlanResponse)
-def generate_meal_plan_endpoint(request: MealPlanRequest):
+def generate_meal_plan_endpoint(
+    request: MealPlanRequest,
+    current_user: Dict = Depends(get_current_active_user)   # uncommented
+):
+    # Enforce day limits based on subscription
+    if current_user["subscription_tier"] == "free" and request.days > 7:
+        request.days = 7   # or raise HTTPException(status_code=403, detail="Free users limited to 7 days")
+    elif current_user["subscription_tier"] == "premium" and request.days > 14:
+        request.days = 14
     # If you want to require authentication, uncomment the following line:
     # current_user: Dict = Depends(get_current_active_user):
 
@@ -36,14 +44,14 @@ def generate_meal_plan_endpoint(request: MealPlanRequest):
     )
 
     # Optionally save to history (uncomment when auth is active)
-    # save_user_profile(current_user["username"], profile_with_metrics)
-    # if meal_plan:
-    #     save_meal_plan(current_user["username"], {
-    #         "plan_data": meal_plan,
-    #         "day_summaries": day_summaries,
-    #         "user_profile": profile_with_metrics,
-    #         "food_count": len(filtered_df)
-    #     })
+    save_user_profile(current_user["username"], profile_with_metrics)
+    if meal_plan:
+        save_meal_plan(current_user["username"], {
+            "plan_data": meal_plan,
+            "day_summaries": day_summaries,
+            "user_profile": profile_with_metrics,
+            "food_count": len(filtered_df)
+        })
 
     return MealPlanResponse(
         user_profile=ProfileWithMetrics(**profile_with_metrics),
