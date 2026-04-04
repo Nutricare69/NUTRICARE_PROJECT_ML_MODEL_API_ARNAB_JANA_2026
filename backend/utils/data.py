@@ -9,6 +9,7 @@
 # ==================================================================================================
 # INTEGRATION IN WEB DEVELOPMENT (BACKEND ONLY):
 #
+# 
 # BACKEND (FastAPI):
 #   - Place this file in your 'utils' directory.
 #   - Import functions in other modules (e.g., meal_plan.py, users.py) like:

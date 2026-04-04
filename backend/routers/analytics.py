@@ -20,6 +20,7 @@
 #   - Fetch weight progress: GET /api/analytics/weight-progress
 #   - Compare plans: GET /api/analytics/plan-comparison?plan_ids=1,2,3
 #
+# 
 # SAMPLE INDIAN USER DATA (as stored in JSON):
 #   "meal_plan_history": [
 #       {

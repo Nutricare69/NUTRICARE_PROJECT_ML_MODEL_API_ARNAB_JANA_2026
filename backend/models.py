@@ -6,6 +6,7 @@
 # ==================================================================================================
 # INTEGRATION IN WEB DEVELOPMENT (BACKEND + FRONTEND):
 #
+# 
 # BACKEND (FastAPI):
 #   - Import these models in routers to define request body shapes and response structures.
 #   - Example: from models import UserRegister, MealPlanRequest, RatingResponse

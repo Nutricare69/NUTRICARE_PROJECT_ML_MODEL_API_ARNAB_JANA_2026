@@ -6,6 +6,7 @@
 # ==================================================================================================
 # INTEGRATION IN WEB DEVELOPMENT (BACKEND + FRONTEND):
 #
+# 
 # BACKEND (FastAPI):
 #   - This is the main file you run with: uvicorn main:app --reload
 #   - It aggregates all routers from the 'routers' package (auth, users, meal_plan, admin, foods, analysis, analytics, feedback).

@@ -6,7 +6,7 @@
 #          user profiles and meal plan history.
 # ==================================================================================================
 # INTEGRATION IN WEB DEVELOPMENT (BACKEND + FRONTEND):
-#
+
 # BACKEND (FastAPI):
 #   - Place this file in your 'routers' or 'api' directory.
 #   - In your main 'main.py' or 'app.py', include the router:
