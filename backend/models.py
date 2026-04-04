@@ -155,3 +155,22 @@ class ImageAnalysisResponse(BaseModel):
     estimated_carbs: float
     estimated_fat: float
     food_name: Optional[str] = None
+
+    # ---------- Rating & Feedback Schemas ----------
+class RatingRequest(BaseModel):
+    plan_id: int
+    day_name: str          # e.g. "Monday"
+    stars: int = Field(ge=1, le=5)
+    feedback: Optional[str] = Field(None, max_length=500)
+
+class RatingResponse(BaseModel):
+    plan_id: int
+    day_name: str
+    stars: int
+    feedback: Optional[str]
+    rated_at: str
+
+class UserFeedbackSummary(BaseModel):
+    plan_id: int
+    plan_timestamp: str
+    ratings: Dict[str, RatingResponse]   # key = day_name
