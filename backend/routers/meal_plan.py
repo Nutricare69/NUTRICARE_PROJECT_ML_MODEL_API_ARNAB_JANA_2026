@@ -56,5 +56,6 @@ def generate_meal_plan_endpoint(request: MealPlanRequest):
 @router.get("/saved")
 def get_saved_plans(current_user: Dict = Depends(get_current_active_user)):
     from utils.storage import get_user_history
-    _, meal_plans = get_user_history(current_user["username"])
-    return {"saved_plans": meal_plans}
+    profiles, meal_plans = get_user_history(current_user["username"])
+    # Ratings are already inside each plan (due to storage.py change)
+    return {"saved_plans": meal_plans, "profiles": profiles}
