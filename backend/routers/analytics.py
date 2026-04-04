@@ -1,3 +1,4 @@
+import re
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List, Dict, Any
 from datetime import datetime, timedelta
@@ -7,6 +8,23 @@ from dependencies import get_current_active_user
 
 router = APIRouter(prefix="/api/analytics", tags=["Analytics"])
 
+# ========== Helper function for sorting day keys ==========
+def day_number(key: str) -> int:
+    """
+    Convert a day key (e.g., "Day 01", "Monday") into a sortable integer.
+    Handles both new "Day XX" format and old weekday names.
+    """
+    # If key looks like "Day 01", extract the numeric part
+    match = re.search(r'\d+', key)
+    if match:
+        return int(match.group())
+    # Otherwise, assume weekday names and map to index (backward compatibility)
+    weekday_order = {"Monday": 0, "Tuesday": 1, "Wednesday": 2, "Thursday": 3,
+                    "Friday": 4, "Saturday": 5, "Sunday": 6}
+    return weekday_order.get(key, 0)
+
+
+# ---------- Endpoint 1: Daily Trends (line chart) ----------
 @router.get("/daily-trends")
 def get_daily_trends(current_user: Dict = Depends(get_current_active_user)):
     """
@@ -23,7 +41,6 @@ def get_daily_trends(current_user: Dict = Depends(get_current_active_user)):
     if not plans:
         return {"message": "No meal plans found"}
 
-    # Flatten all days from all plans into a list sorted by date
     daily_records = []
     for plan in plans:
         plan_timestamp = plan.get("timestamp")
@@ -35,55 +52,45 @@ def get_daily_trends(current_user: Dict = Depends(get_current_active_user)):
             continue
 
         day_summaries = plan.get("day_summaries", {})
-        # day_summaries keys are day names (Monday, Tuesday...)
-        # We need to map day names to offsets (Monday=0, Tuesday=1, ...)
-        day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-        for offset, day_name in enumerate(day_names):
-            if day_name in day_summaries:
-                day_data = day_summaries[day_name]
-                # Calculate actual date: plan_date + offset days
-                actual_date = plan_date + timedelta(days=offset)
-                daily_records.append({
-                    "date": actual_date.strftime("%Y-%m-%d"),
-                    "calories": day_data.get("total_calories", 0),
-                    "protein": day_data.get("total_protein", 0),
-                    "fat": day_data.get("total_fat", 0),
-                    "carbs": day_data.get("total_carbs", 0),
-                    "target_calories": day_data.get("target_calories", 0),
-                    "target_protein": day_data.get("target_protein", 0),
-                    "target_fat": day_data.get("target_fat", 0),
-                    "target_carbs": day_data.get("target_carbs", 0)
-                })
+        if not day_summaries:
+            continue
 
-    # Sort by date
+        # Sort day keys (e.g., "Day 01", "Day 02", ...) using the helper
+        sorted_days = sorted(day_summaries.keys(), key=day_number)
+
+        for offset, day_key in enumerate(sorted_days):
+            day_data = day_summaries[day_key]
+            actual_date = plan_date + timedelta(days=offset)
+            daily_records.append({
+                "date": actual_date.strftime("%Y-%m-%d"),
+                "calories": day_data.get("total_calories", 0),
+                "protein": day_data.get("total_protein", 0),
+                "fat": day_data.get("total_fat", 0),
+                "carbs": day_data.get("total_carbs", 0),
+                "target_calories": day_data.get("target_calories", 0),
+                "target_protein": day_data.get("target_protein", 0),
+                "target_fat": day_data.get("target_fat", 0),
+                "target_carbs": day_data.get("target_carbs", 0)
+            })
+
     daily_records.sort(key=lambda x: x["date"])
-
-    # Format for Chart.js: separate arrays for labels (dates) and datasets
     labels = [rec["date"] for rec in daily_records]
-    calories_consumed = [rec["calories"] for rec in daily_records]
-    calories_target = [rec["target_calories"] for rec in daily_records]
-    protein_consumed = [rec["protein"] for rec in daily_records]
-    protein_target = [rec["target_protein"] for rec in daily_records]
-    fat_consumed = [rec["fat"] for rec in daily_records]
-    fat_target = [rec["target_fat"] for rec in daily_records]
-    carbs_consumed = [rec["carbs"] for rec in daily_records]
-    carbs_target = [rec["target_carbs"] for rec in daily_records]
-
     return {
         "labels": labels,
         "datasets": {
-            "calories": calories_consumed,
-            "calories_target": calories_target,
-            "protein": protein_consumed,
-            "protein_target": protein_target,
-            "fat": fat_consumed,
-            "fat_target": fat_target,
-            "carbs": carbs_consumed,
-            "carbs_target": carbs_target
+            "calories": [rec["calories"] for rec in daily_records],
+            "calories_target": [rec["target_calories"] for rec in daily_records],
+            "protein": [rec["protein"] for rec in daily_records],
+            "protein_target": [rec["target_protein"] for rec in daily_records],
+            "fat": [rec["fat"] for rec in daily_records],
+            "fat_target": [rec["target_fat"] for rec in daily_records],
+            "carbs": [rec["carbs"] for rec in daily_records],
+            "carbs_target": [rec["target_carbs"] for rec in daily_records]
         }
     }
 
 
+# ---------- Endpoint 2: Macro Distribution (pie chart) ----------
 @router.get("/macro-distribution")
 def get_macro_distribution(current_user: Dict = Depends(get_current_active_user)):
     """
@@ -132,6 +139,7 @@ def get_macro_distribution(current_user: Dict = Depends(get_current_active_user)
     }
 
 
+# ---------- Endpoint 3: Weight & BMI Progress (line chart) ----------
 @router.get("/weight-progress")
 def get_weight_progress(current_user: Dict = Depends(get_current_active_user)):
     """
@@ -166,6 +174,7 @@ def get_weight_progress(current_user: Dict = Depends(get_current_active_user)):
     }
 
 
+# ---------- Endpoint 4: Plan Comparison (table/bar chart) ----------
 @router.get("/plan-comparison")
 def compare_plans(plan_ids: str = None, current_user: Dict = Depends(get_current_active_user)):
     """
@@ -190,36 +199,39 @@ def compare_plans(plan_ids: str = None, current_user: Dict = Depends(get_current
     if len(selected_plans) != len(plan_id_list):
         raise HTTPException(status_code=404, detail="One or more plan IDs not found")
 
-    # For each plan, extract its day summaries (keyed by day name)
     comparison = {}
     for plan in selected_plans:
         plan_id = plan["plan_id"]
-        plan_data = plan.get("day_summaries", {})
-        # Convert to list of day totals ordered by day
-        day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        day_summaries = plan.get("day_summaries", {})
+        if not day_summaries:
+            continue
+
+        # Sort day keys using the helper
+        sorted_days = sorted(day_summaries.keys(), key=day_number)
         days_data = []
-        for day in day_names:
-            if day in plan_data:
-                days_data.append({
-                    "day": day,
-                    "calories": plan_data[day].get("total_calories", 0),
-                    "protein": plan_data[day].get("total_protein", 0),
-                    "fat": plan_data[day].get("total_fat", 0),
-                    "carbs": plan_data[day].get("total_carbs", 0)
-                })
+        for day_key in sorted_days:
+            day_data = day_summaries[day_key]
+            days_data.append({
+                "day": day_key,
+                "calories": day_data.get("total_calories", 0),
+                "protein": day_data.get("total_protein", 0),
+                "fat": day_data.get("total_fat", 0),
+                "carbs": day_data.get("total_carbs", 0)
+            })
         comparison[f"Plan {plan_id}"] = days_data
 
-    # Also return target macro info from the first plan for reference
-    first_plan = selected_plans[0]
+    # Target info from first plan's first day (for reference)
     target_info = {}
-    if first_plan.get("day_summaries"):
-        sample_day = list(first_plan["day_summaries"].values())[0]
-        target_info = {
-            "target_calories": sample_day.get("target_calories"),
-            "target_protein": sample_day.get("target_protein"),
-            "target_fat": sample_day.get("target_fat"),
-            "target_carbs": sample_day.get("target_carbs")
-        }
+    if selected_plans and selected_plans[0].get("day_summaries"):
+        first_plan_days = selected_plans[0]["day_summaries"]
+        if first_plan_days:
+            sample_day = next(iter(first_plan_days.values()))
+            target_info = {
+                "target_calories": sample_day.get("target_calories"),
+                "target_protein": sample_day.get("target_protein"),
+                "target_fat": sample_day.get("target_fat"),
+                "target_carbs": sample_day.get("target_carbs")
+            }
 
     return {
         "comparison": comparison,
