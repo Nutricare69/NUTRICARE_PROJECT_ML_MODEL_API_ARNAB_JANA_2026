@@ -612,9 +612,35 @@
     "registration_date": "2026-03-05 22:00:45",
     "profile_history": [],
     "meal_plan_history": [],
-    "last_login": null,
+    "last_login": "2026-04-04 12:49:40",
     "user_type": "admin",
     "is_active": true,
-    "login_count": 0
+    "login_count": 2
+  },
+  "john_doe": {
+    "password": "fcf730b6d95236ecd3c9fc2d92d7b6b2bb061514961aec041d6c7a7192f592e4",
+    "email": "john@example.com",
+    "name": "John Doe",
+    "registration_date": "2026-04-04 13:13:00",
+    "profile_history": [],
+    "meal_plan_history": [],
+    "last_login": "2026-04-04 13:21:40",
+    "user_type": "user",
+    "is_active": true,
+    "login_count": 4,
+    "subscription_tier": "free"
+  },
+  "priya_sharma": {
+    "password": "0a8b8dfad3f637d7d30fed7b108c5c5986c4775d14cab26ec9279866eba99116",
+    "email": "priya@example.com",
+    "name": "Priya Sharma",
+    "registration_date": "2026-04-04 13:36:34",
+    "profile_history": [],
+    "meal_plan_history": [],
+    "last_login": null,
+    "user_type": "user",
+    "is_active": true,
+    "login_count": 0,
+    "subscription_tier": "free"
   }
 }

@@ -1,7 +1,7 @@
 fastapi[all]
 python-multipart
 passlib[bcrypt]
-python-jose[cryptography]
+# python-jose[cryptography]
 pandas
 numpy
 plotly

@@ -29,7 +29,9 @@ def register_user(username: str, password: str, email: str, name: str) -> Tuple[
     # Email validation (simple)
     if "@" not in email or "." not in email:
         return False, "Invalid email format!"
-        users[username] = {
+    
+    # Create new user (moved outside the if block)
+    users[username] = {
         'password': hash_password(password),
         'email': email,
         'name': name,
