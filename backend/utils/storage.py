@@ -29,6 +29,8 @@ def register_user(username: str, password: str, email: str, name: str) -> Tuple[
     # Email validation (simple)
     if "@" not in email or "." not in email:
         return False, "Invalid email format!"
+    
+    # Create new user (moved outside the if block)
     users[username] = {
         'password': hash_password(password),
         'email': email,
@@ -39,7 +41,8 @@ def register_user(username: str, password: str, email: str, name: str) -> Tuple[
         'last_login': None,
         'user_type': 'user',
         'is_active': True,
-        'login_count': 0
+        'login_count': 0,
+        'subscription_tier': 'free'
     }
     save_users(users)
     return True, "Registration successful!"
@@ -77,6 +80,8 @@ def save_meal_plan(username: str, meal_plan_data: Dict[str, Any]) -> bool:
     if username in users:
         meal_plan_data['timestamp'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         meal_plan_data['plan_id'] = len(users[username]['meal_plan_history']) + 1
+        # New line here
+        meal_plan_data['ratings'] = {}
         users[username]['meal_plan_history'].append(meal_plan_data)
         users[username]['meal_plan_history'] = users[username]['meal_plan_history'][-10:]
         save_users(users)
@@ -124,7 +129,8 @@ def create_admin_account() -> bool:
             'last_login': None,
             'user_type': 'admin',
             'is_active': True,
-            'login_count': 0
+            'login_count': 0,
+            'subscription_tier': 'premium'
         }
         save_users(users)
         return True
@@ -147,3 +153,82 @@ def get_system_stats() -> Dict[str, int]:
         if last_login and last_login.startswith(today):
             stats['today_logins'] += 1
     return stats
+
+def add_rating_to_meal_plan(username: str, plan_id: int, day_name: str, stars: int, feedback: str = None) -> bool:
+    """Add or update a rating for a specific day of a meal plan."""
+    users = load_users()
+    if username not in users:
+        return False
+
+    for plan in users[username].get('meal_plan_history', []):
+        if plan.get('plan_id') == plan_id:
+            if 'ratings' not in plan:
+                plan['ratings'] = {}
+            plan['ratings'][day_name] = {
+                'stars': stars,
+                'feedback': feedback,
+                'rated_at': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            }
+            save_users(users)
+            return True
+    return False
+
+
+def get_user_feedback(username: str) -> List[Dict]:
+    """Retrieve all ratings across all meal plans of a user."""
+    users = load_users()
+    if username not in users:
+        return []
+
+    feedback_list = []
+    for plan in users[username].get('meal_plan_history', []):
+        if 'ratings' in plan and plan['ratings']:
+            for day, rating_data in plan['ratings'].items():
+                feedback_list.append({
+                    'plan_id': plan['plan_id'],
+                    'plan_timestamp': plan.get('timestamp'),
+                    'day_name': day,
+                    'stars': rating_data.get('stars'),
+                    'feedback': rating_data.get('feedback'),
+                    'rated_at': rating_data.get('rated_at')
+                })
+    return feedback_list
+
+
+def get_all_users_feedback() -> List[Dict]:
+    """Admin function: get all ratings from all users."""
+    users = load_users()
+    all_feedback = []
+    for username, user_data in users.items():
+        for plan in user_data.get('meal_plan_history', []):
+            if 'ratings' in plan and plan['ratings']:
+                for day, rating_data in plan['ratings'].items():
+                    all_feedback.append({
+                        'username': username,
+                        'user_name': user_data.get('name'),
+                        'plan_id': plan['plan_id'],
+                        'plan_timestamp': plan.get('timestamp'),
+                        'day_name': day,
+                        'stars': rating_data.get('stars'),
+                        'feedback': rating_data.get('feedback'),
+                        'rated_at': rating_data.get('rated_at')
+                    })
+    return all_feedback
+
+
+def upgrade_user_to_premium(username: str) -> bool:
+    """Upgrade a user's subscription to premium."""
+    users = load_users()
+    if username not in users:
+        return False
+    users[username]['subscription_tier'] = 'premium'
+    save_users(users)
+    return True
+
+def get_user_subscription(username: str) -> str:
+    """Return subscription tier ('free' or 'premium') for a user."""
+    users = load_users()
+    user = users.get(username)
+    if user:
+        return user.get('subscription_tier', 'free')
+    return 'free'
